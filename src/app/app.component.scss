@@ -1,0 +1,48 @@
+mat-drawer-container {
+  height: 100vh;
+}
+
+.menu-icon {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.25);
+  p {
+    margin: 0px;
+  }
+}
+
+mat-toolbar {
+  gap: 20px;
+}
+
+.sidenav-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+  p {
+    font-size: 20px;
+    color: bisque;
+    font-weight: regular;
+    padding-top: 10px;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
