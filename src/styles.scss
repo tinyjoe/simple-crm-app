@@ -1,9 +1,68 @@
-@use "@angular/material" as mat;
+@use "./colors.scss" as col;
 
 * {
   margin: 0px;
   font-family: "Montserrat";
   font-weight: 300;
+}
+
+h2 {
+  font-family: "Montserrat" !important;
+  font-weight: 700 !important;
+  font-size: 25pt !important;
+  color: col.$accentColor;
+}
+
+h3 {
+  font-family: "Montserrat" !important;
+  font-weight: 700 !important;
+  font-size: 22px;
+}
+
+.primary-button {
+  background-color: col.$primaryColor;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 20px;
+  color: col.$backgroundColor;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 22px;
+  &:hover {
+    background-color: col.$hoverPrimaryColor;
+    color: col.$hoverColorDark;
+  }
+}
+
+.secondary-button {
+  background: none;
+  padding: 15px 25px;
+  border: 1px solid col.$primaryColor;
+  border-radius: 20px;
+  color: col.$primaryColor;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
+  &:hover {
+    color: col.$hoverPrimaryColor;
+    border: 1px solid col.$hoverPrimaryColor;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.three-quarter-width {
+  width: 67%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.quarter-width {
+  width: 33%;
 }
 
 /* montserrat-300 - latin */
@@ -37,10 +96,4 @@
   font-style: normal;
   font-weight: 900;
   src: url("./assets/fonts/montserrat-v29-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-h3 {
-  font-family: "Montserrat" !important;
-  font-weight: 700 !important;
-  font-size: 22px;
 }

@@ -1,26 +1,29 @@
 <mat-drawer-container autosize>
-  <mat-drawer #drawer class="sidenav" mode="side" opened>
+  <mat-drawer #drawer class="sidenav" mode="side" opened="true">
     <div class="logo-container">
       <p>Platzhalter Logo</p>
     </div>
 
-    <div class="sidenav-item">
+    <button class="sidenav-item" (click)="navigate('')">
       <mat-icon>dashboard</mat-icon>
       <p>Dashboard</p>
-    </div>
+    </button>
 
-    <div class="sidenav-item">
+    <button class="sidenav-item" (click)="navigate('user')">
       <mat-icon>groups</mat-icon>
       <p>User</p>
-    </div>
+    </button>
   </mat-drawer>
 
   <div class="main-content">
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <button mat-icon-button class="menu-icon" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
+        <mat-icon>arrow_back</mat-icon>
       </button>
       <h3>Simple CRM</h3>
     </mat-toolbar>
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </mat-drawer-container>

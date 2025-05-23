@@ -1,16 +1,36 @@
-mat-drawer-container {
-  height: 100vh;
+@use "../colors.scss" as col;
+
+.main-content {
+  background-color: col.$hoverColorDark;
 }
 
+mat-drawer-container {
+  height: 100vh;
+  background-color: col.$backgroundColor;
+}
+
+mat-toolbar {
+  background-color: col.$backgroundColor;
+}
+
+.router-container {
+  background-color: col.$backgroundColor;
+  padding-left: 56px;
+  padding-top: 60px;
+}
 .menu-icon {
   cursor: pointer;
   background: none;
   border: none;
   color: white;
+  &:hover {
+    color: col.$hoverPrimaryColor;
+  }
 }
 
 .sidenav {
   width: 300px;
+  background-color: col.$backgroundColor;
 }
 
 .logo-container {
@@ -29,20 +49,39 @@ mat-toolbar {
   gap: 20px;
 }
 
+button {
+  background: none;
+  border: none;
+  p {
+    font-size: 20px;
+    color: white;
+    font-weight: regular;
+    padding-top: 10px;
+  }
+  &:hover {
+    background-color: col.$hoverColorDark;
+    color: col.$hoverPrimaryColor;
+    p {
+      color: col.$hoverPrimaryColor;
+    }
+  }
+  &:active,
+  &:focus {
+    background-color: col.$hoverColorDark;
+    color: col.$hoverPrimaryColor;
+    p {
+      color: col.$hoverPrimaryColor;
+    }
+  }
+}
+
 .sidenav-item {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: start;
   gap: 20px;
   padding: 10px 30px;
   cursor: pointer;
-  p {
-    font-size: 20px;
-    color: bisque;
-    font-weight: regular;
-    padding-top: 10px;
-  }
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.75);
-  }
+  color: white;
 }

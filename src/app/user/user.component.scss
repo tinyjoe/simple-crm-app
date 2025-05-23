@@ -1,0 +1,11 @@
+@use "../../colors.scss" as col;
+
+.add-user-button {
+  background-color: col.$accentColor;
+  color: col.$backgroundColor;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+}
