@@ -1,9 +1,30 @@
 @use "./colors.scss" as col;
+@use "@angular/material" as mat;
 
 * {
   margin: 0px;
   font-family: "Montserrat";
   font-weight: 300;
+}
+
+:root {
+  @include mat.form-field-overrides(
+    (
+      outlined-caret-color: col.$primaryColor,
+      outlined-focus-outline-color: col.$primaryColor,
+      outlined-focus-label-text-color: col.$primaryColor,
+      outlined-hover-outline-color: col.$hoverPrimaryColor,
+      outlined-hover-label-text-color: col.$hoverPrimaryColor,
+    )
+  );
+  @include mat.datepicker-overrides(
+    (
+      calendar-date-selected-state-background-color: col.$primaryColor,
+      calendar-date-focus-state-background-color: col.$primaryColor,
+      calendar-date-hover-state-background-color: col.$hoverPrimaryColor,
+      toggle-active-state-icon-color: col.$primaryColor,
+    )
+  );
 }
 
 h2 {
@@ -24,6 +45,7 @@ h3 {
   padding: 15px 25px;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
   color: col.$backgroundColor;
   font-family: "Montserrat";
   font-weight: 500;
@@ -39,6 +61,7 @@ h3 {
   padding: 15px 25px;
   border: 1px solid col.$primaryColor;
   border-radius: 20px;
+  cursor: pointer;
   color: col.$primaryColor;
   font-family: "Montserrat";
   font-weight: 500;

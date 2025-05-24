@@ -39,7 +39,9 @@
     </mat-dialog-content>
 
     <mat-dialog-actions class="add-button-row">
-      <button mat-button class="secondary-button">No Thanks</button>
+      <button mat-button class="secondary-button" (click)="closeDialog()">
+        No Thanks
+      </button>
       <button mat-button class="primary-button" (click)="saveUser()">Ok</button>
     </mat-dialog-actions>
   </div>

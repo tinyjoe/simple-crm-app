@@ -37,3 +37,10 @@ mat-dialog-content {
   justify-content: center;
   width: 100%;
 }
+
+mat-form-field {
+  border-radius: 20px !important;
+  input {
+    border-radius: 20px !important;
+  }
+}
