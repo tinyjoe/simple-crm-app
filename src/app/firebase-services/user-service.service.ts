@@ -59,6 +59,7 @@ export class UserServiceService {
       id: id,
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
+      email: obj.email || '',
       birthDate: obj.birthDate || '',
       street: obj.street || '',
       zip: obj.zip || '',

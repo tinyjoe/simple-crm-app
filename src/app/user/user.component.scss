@@ -9,3 +9,44 @@
   bottom: 60px;
   right: 60px;
 }
+
+.user-table {
+  border-collapse: collapse;
+  tr {
+    border-bottom: 1px solid col.$disabledColor;
+    cursor: pointer;
+    &:hover {
+      background-color: col.$hoverColorDark;
+    }
+    &:first-child {
+      cursor: unset;
+      &:hover {
+        background-color: unset;
+      }
+    }
+    &:last-child {
+      border: none;
+    }
+  }
+  td {
+    height: 20px;
+    padding: 10px;
+    &:first-child {
+      padding-left: 20px;
+    }
+  }
+  .label-row {
+    text-align: left;
+    color: col.$disabledColor;
+    font-size: 14px;
+  }
+  .content-row {
+    text-align: left;
+    font-size: 18px;
+    line-height: 3;
+    height: 50px;
+  }
+  .name-tag {
+    font-weight: 700;
+  }
+}

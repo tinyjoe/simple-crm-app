@@ -5,20 +5,45 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from '../../models/user.class';
+import { MatCardModule } from '@angular/material/card';
+import { UserServiceService } from '../firebase-services/user-service.service';
+import { get } from '@angular/fire/database';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIcon, MatButtonModule, MatTooltipModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    MatIcon,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatCardModule,
+  ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
   user: User = new User();
+  userList: User[] = [];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserServiceService
+  ) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.getUsersList();
+    }, 2000);
+  }
 
   openAddUserDialog(): void {
     this.dialog.open(DialogAddUserComponent);
+  }
+
+  getUsersList(): User[] {
+    return this.userService.users;
   }
 }

@@ -7,3 +7,18 @@
 >
   <mat-icon>add</mat-icon>
 </button>
+
+<mat-card appearance="outlined">
+  <table class="user-table">
+    <tr class="label-row">
+      <td>Name</td>
+      <td>E-Mail</td>
+      <td>City</td>
+    </tr>
+    <tr class="content-row" *ngFor="let user of getUsersList()">
+      <td class="name-tag">{{ user.firstName }} {{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.city }}</td>
+    </tr>
+  </table>
+</mat-card>

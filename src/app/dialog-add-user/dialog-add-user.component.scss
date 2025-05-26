@@ -38,9 +38,7 @@ mat-dialog-content {
   width: 100%;
 }
 
-mat-form-field {
-  border-radius: 20px !important;
-  input {
-    border-radius: 20px !important;
-  }
+.progress-bar {
+  color: col.$accentColor;
+  background-color: col.$accentColor;
 }

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { UserServiceService } from '../firebase-services/user-service.service';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -26,6 +27,7 @@ import { UserServiceService } from '../firebase-services/user-service.service';
     MatDatepickerModule,
     CommonModule,
     FormsModule,
+    MatProgressBarModule,
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
@@ -35,14 +37,17 @@ export class DialogAddUserComponent {
   readonly dialogRef = inject(MatDialogRef<DialogAddUserComponent>);
   user: User = new User();
   birthDate!: Date;
+  loading = false;
 
   constructor(public userService: UserServiceService) {}
 
   saveUser(): void {
+    this.loading = true;
     this.user.birthDate = this.birthDate.getTime();
     let createdUser: User = {
       firstName: this.user.firstName,
       lastName: this.user.lastName,
+      email: this.user.email,
       birthDate: this.user.birthDate,
       street: this.user.street,
       zip: this.user.zip,
@@ -50,6 +55,12 @@ export class DialogAddUserComponent {
     };
     console.log('New User: ', this.user);
     this.userService.addUser(createdUser);
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
+    setTimeout(() => {
+      this.dialogRef.close();
+    }, 2000);
   }
 
   closeDialog(): void {

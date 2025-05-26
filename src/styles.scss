@@ -25,6 +25,21 @@
       toggle-active-state-icon-color: col.$primaryColor,
     )
   );
+
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: col.$accentColor,
+      track-color: col.$accentColor,
+      track-shape: round,
+    )
+  );
+
+  @include mat.card-overrides(
+    (
+      outlined-container-color: col.$backgroundColor,
+      outlined-outline-color: col.$primaryColor,
+    )
+  );
 }
 
 h2 {
