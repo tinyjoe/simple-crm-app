@@ -1,0 +1,54 @@
+@use "../../colors.scss" as col;
+
+.detail-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 115px;
+  gap: 50px;
+  height: 200px;
+  background-color: col.$hoverColorDark;
+  border-bottom: 3px solid col.$primaryColor;
+  z-index: 10;
+  .profile-icon {
+    width: 250px;
+    height: 250px;
+    margin-top: 35px;
+    margin-left: 50px;
+  }
+  h2 {
+    color: col.$primaryColor;
+  }
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: -10px;
+  padding-top: 115px;
+  padding-left: 350px;
+  gap: 50px;
+  height: 500px;
+  background-color: col.$hoverColorDark;
+  z-index: 2;
+  p {
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 75px;
+  }
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+  }
+}

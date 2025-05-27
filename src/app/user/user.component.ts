@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { UserServiceService } from '../firebase-services/user-service.service';
 import { get } from '@angular/fire/database';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -30,7 +31,8 @@ export class UserComponent {
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserServiceService
+    private userService: UserServiceService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -45,5 +47,9 @@ export class UserComponent {
 
   getUsersList(): User[] {
     return this.userService.users;
+  }
+
+  goToUserDetail(id: string | undefined): void {
+    this.router.navigate(['/user', id]);
   }
 }

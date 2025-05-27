@@ -1,20 +1,16 @@
 import { inject, Injectable } from '@angular/core';
 import { User } from '../../models/user.class';
 import {
-  CollectionReference,
   Firestore,
   addDoc,
   collection,
-  collectionData,
-  deleteDoc,
   doc,
-  limit,
+  docData,
+  getDoc,
   onSnapshot,
-  orderBy,
   query,
-  updateDoc,
-  where,
 } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -65,5 +61,11 @@ export class UserServiceService {
       zip: obj.zip || '',
       city: obj.city || '',
     };
+  }
+
+  async getUserById(userId: string | null): Promise<any> {
+    const documentRef = doc(this.firestore, `users/${userId}`);
+    const documentSnap = await getDoc(documentRef);
+    return documentSnap.exists() ? documentSnap.data() : null;
   }
 }

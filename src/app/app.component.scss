@@ -17,6 +17,7 @@ mat-toolbar {
   background-color: col.$backgroundColor;
   padding: 60px 56px;
 }
+
 .menu-icon {
   cursor: pointer;
   background: none;
@@ -25,6 +26,10 @@ mat-toolbar {
   &:hover {
     color: col.$hoverPrimaryColor;
   }
+}
+
+.main-logo {
+  width: 200px;
 }
 
 .sidenav {

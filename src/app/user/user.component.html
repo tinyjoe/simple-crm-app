@@ -15,7 +15,11 @@
       <td>E-Mail</td>
       <td>City</td>
     </tr>
-    <tr class="content-row" *ngFor="let user of getUsersList()">
+    <tr
+      class="content-row"
+      *ngFor="let user of getUsersList()"
+      (click)="goToUserDetail(user.id)"
+    >
       <td class="name-tag">{{ user.firstName }} {{ user.lastName }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.city }}</td>
