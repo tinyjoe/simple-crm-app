@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { User } from '../../models/user.class';
 import {
+  DocumentReference,
   Firestore,
   addDoc,
   collection,
@@ -9,6 +10,7 @@ import {
   getDoc,
   onSnapshot,
   query,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -34,6 +36,17 @@ export class UserServiceService {
       })
       .then((docRef) => {
         console.log('Document written with ID: ', docRef?.id);
+      });
+  }
+
+  async updateUser(userId: string | null, user: Partial<User>) {
+    const docRef = this.getUserDocRef(userId);
+    await updateDoc(docRef, user)
+      .catch((err) => {
+        console.error(err);
+      })
+      .then(() => {
+        console.log('User updated');
       });
   }
 
@@ -63,9 +76,25 @@ export class UserServiceService {
     };
   }
 
+  getCleanJson(user: User): {} {
+    return {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      birthDate: user.birthDate,
+      street: user.street,
+      zip: user.zip,
+      city: user.city,
+    };
+  }
+
   async getUserById(userId: string | null): Promise<any> {
     const documentRef = doc(this.firestore, `users/${userId}`);
     const documentSnap = await getDoc(documentRef);
     return documentSnap.exists() ? documentSnap.data() : null;
+  }
+
+  getUserDocRef(userId: string | null): DocumentReference {
+    return doc(this.firestore, `users/${userId}`);
   }
 }

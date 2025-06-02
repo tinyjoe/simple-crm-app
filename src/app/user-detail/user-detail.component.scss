@@ -28,8 +28,7 @@
   width: 100%;
   justify-content: flex-start;
   margin-top: -10px;
-  padding-top: 115px;
-  padding-left: 350px;
+  padding: 115px 100px 80px 350px;
   gap: 50px;
   height: 500px;
   background-color: col.$hoverColorDark;
@@ -40,6 +39,7 @@
   }
   .detail-row {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: flex-start;
     gap: 75px;
@@ -50,5 +50,14 @@
     align-items: flex-start;
     justify-content: center;
     gap: 15px;
+  }
+  .edit-icon {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
   }
 }

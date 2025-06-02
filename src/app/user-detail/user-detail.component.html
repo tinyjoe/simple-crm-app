@@ -1,9 +1,15 @@
-<div class="detail-container">
+<div class="detail-container" *ngIf="user$ | async as user; else loading">
   <mat-card class="detail-header">
     <img class="profile-icon" src="/assets/img/avatar.png" />
     <h2>{{ user.firstName }} {{ user.lastName }}</h2>
   </mat-card>
   <mat-card class="detail-content">
+    <button mat-icon-button class="edit-icon" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openEditDialog()">Edit</button>
+    </mat-menu>
     <div class="detail-row">
       <div class="detail-item">
         <mat-icon>mail</mat-icon>
@@ -24,3 +30,7 @@
     </div>
   </mat-card>
 </div>
+
+<ng-template #loading>
+  <p>Loading user data...</p>
+</ng-template>

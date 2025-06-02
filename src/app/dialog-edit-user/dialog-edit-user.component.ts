@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
+  MatDialog,
   MatDialogActions,
   MatDialogContent,
   MatDialogRef,
@@ -13,9 +14,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserServiceService } from '../firebase-services/user-service.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-dialog-add-user',
+  selector: 'app-dialog-edit-user',
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [
@@ -28,32 +30,29 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     FormsModule,
     MatProgressBarModule,
   ],
-  templateUrl: './dialog-add-user.component.html',
-  styleUrl: './dialog-add-user.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './dialog-edit-user.component.html',
+  styleUrl: './dialog-edit-user.component.scss',
 })
-export class DialogAddUserComponent {
-  readonly dialogRef = inject(MatDialogRef<DialogAddUserComponent>);
-  user: User = new User();
-  birthDate!: Date;
+export class DialogEditUserComponent {
+  readonly dialogRef = inject(MatDialogRef<DialogEditUserComponent>);
   loading = false;
+  userId: string | null = '';
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    birthDate: 0,
+    street: '',
+    zip: 0,
+    city: '',
+  };
 
-  constructor(public userService: UserServiceService) {}
+  constructor(private userService: UserServiceService) {}
 
-  saveUser(): void {
+  updateUser(): void {
     this.loading = true;
-    this.user.birthDate = this.birthDate.getTime();
-    let createdUser: User = {
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
-      email: this.user.email,
-      birthDate: this.user.birthDate,
-      street: this.user.street,
-      zip: this.user.zip,
-      city: this.user.city,
-    };
-    console.log('New User: ', this.user);
-    this.userService.addUser(createdUser);
+    let updatedUser: User = this.createUpdatedUser();
+    this.userService.updateUser(this.userId, updatedUser);
     setTimeout(() => {
       this.loading = false;
     }, 1000);
@@ -62,7 +61,19 @@ export class DialogAddUserComponent {
     }, 2000);
   }
 
-  closeDialog(): void {
+  private createUpdatedUser(): User {
+    return {
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      birthDate: this.user.birthDate,
+      street: this.user.street,
+      zip: this.user.zip,
+      city: this.user.city,
+    };
+  }
+
+  closeDialog() {
     this.dialogRef.close();
   }
 }
